@@ -54,6 +54,8 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
 
+  gem "quiet_assets"
+
   # Manage application processes
   gem "foreman"
 
@@ -80,3 +82,5 @@ group :test  do
   gem "database_cleaner"
   gem "launchy"
 end
+
+gem 'devise'
