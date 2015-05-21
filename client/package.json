@@ -1,0 +1,68 @@
+{
+  "name": "react-webpack-rails-tutorial",
+  "version": "1.1.0",
+  "description": "Code from the React Webpack tutorial.",
+  "main": "server.js",
+  "engines": {
+    "node": "0.12.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/justin808/react-webpack-rails-tutorial.git"
+  },
+  "keywords": [
+    "react",
+    "tutorial",
+    "comment",
+    "example"
+  ],
+  "author": "justin808",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justin808/react-webpack-rails-tutorial/issues"
+  },
+  "homepage": "https://github.com/justin808/react-webpack-rails-tutorial",
+  "dependencies": {
+    "alt": "^0.16.1",
+    "babel-core": "^5.2.6",
+    "babel-loader": "^5.0.0",
+    "body-parser": "^1.12.3",
+    "es5-shim": "^4.1.1",
+    "imports-loader": "^0.6.3",
+    "jquery": "^2.1.4",
+    "loader-utils": "^0.2.7",
+    "marked": "^0.3.3",
+    "react": "^0.13.2",
+    "react-bootstrap": "^0.21.2",
+    "sleep": "^2.0.0",
+    "webpack": "^1.8.11"
+  },
+  "devDependencies": {
+    "babel-eslint": "^3.0.1",
+    "bootstrap-sass": "^3.3.4",
+    "bootstrap-sass-loader": "^1.0.4",
+    "css-loader": "^0.12.0",
+    "eslint": "^0.20.0",
+    "eslint-plugin-react": "^2.2.0",
+    "esprima-fb": "^15001.1.0-dev-harmony-fb",
+    "expose-loader": "^0.6.0",
+    "express": "^4.12.3",
+    "file-loader": "^0.8.1",
+    "gulp": "^3.8.11",
+    "gulp-eslint": "^0.11.1",
+    "jscs": "^1.13.1",
+    "node-sass": "^2.1.1",
+    "react-hot-loader": "^1.2.6",
+    "sass-loader": "^0.6.0",
+    "style-loader": "^0.12.1",
+    "url-loader": "^0.5.5",
+    "webpack-dev-server": "^1.8.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "gulp": "gulp",
+    "jscs": "jscs --verbose",
+    "eslint": "eslint"
+  }
+}
