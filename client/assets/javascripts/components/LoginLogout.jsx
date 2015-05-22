@@ -4,8 +4,11 @@ import ModalTrigger from 'react-bootstrap/lib/ModalTrigger';
 import AuthStore from '../stores/AuthStore';
 import AuthActions from '../actions/AuthActions';
 import Login from '../components/Login';
+import SignUp from '../components/SignUp';
+import OverlayMixin from 'react-bootstrap/lib/OverlayMixin';
 
 const LoginLogout = React.createClass({
+    mixins: [OverlayMixin],
   displayName: 'LoginLogout',
 
   getInitialState() {
@@ -13,8 +16,14 @@ const LoginLogout = React.createClass({
   },
 
   getStoreState() {
+    var isModalOpen = ( this.state && this.state.isModalOpen ) ? this.state.isModalOpen : false 
+    var auth = AuthStore.getState()
+
+    if( auth.profile.user_id ){ isModalOpen = false; }
+
     return {
-        auth: AuthStore.getState()
+        auth: auth,
+        isModalOpen: isModalOpen
     };
   },
 
@@ -35,12 +44,24 @@ const LoginLogout = React.createClass({
       AuthActions.logout();
   },
 
-  onLogin() {
-      AuthActions.showLogin();
+  onSignUp() {
+      this.setState({
+          isModalOpen: true
+      });
+  },
+
+  onRequestHide() {
+      this.setState({
+          isModalOpen: false
+      });
   },
 
   onLoginSubmit(email, password) {
       AuthActions.login(email, password);
+  },
+
+  onSignUpSubmit(name, email, password, confirmation) {
+      AuthActions.signUp(name, email, password, confirmation );
   },
 
   render() {
@@ -50,13 +71,31 @@ const LoginLogout = React.createClass({
     if( profile.user_id ){
         login_logout = <NavItem eventKey={1} href='#' onClick={this.onLogout}>Logout</NavItem>;
     } else {
-        login_logout = <ModalTrigger modal={<Login error={this.state.auth.loginError} onLoginSubmit={this.onLoginSubmit}/>}><NavItem eventKey={1} href='#'>Login</NavItem></ModalTrigger>;
+        login_logout = <ModalTrigger modal={
+            <Login error={this.state.auth.loginError}
+                onSignUp={this.onSignUp}
+                onLoginSubmit={this.onLoginSubmit}/>
+        }><NavItem eventKey={1} href='#'>Login</NavItem></ModalTrigger>;
     }
 
     return (
         login_logout
     );
+  },
+
+  renderOverlay() {
+      if( !this.state.isModalOpen ){
+          return <span />;
+      } else {
+          return (
+              <SignUp 
+                  errors={this.state.auth.signUpErrors}
+                  onRequestHide={this.onRequestHide}
+                  onSubmit={this.onSignUpSubmit}/>
+          );
+      }
   }
+
 });
 
 export default LoginLogout;

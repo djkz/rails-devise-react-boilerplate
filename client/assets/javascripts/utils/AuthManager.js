@@ -22,6 +22,20 @@ const AuthManager = {
     });
   },
 
+  signUp(name, email, password, password_confirmation){
+    return $.ajax({
+      url: "/users",
+      dataType: 'json',
+      method: "post",
+      data: { user: {
+          name: name,
+          email: email,
+          password: password,
+          password_confirmation: password_confirmation
+      } }
+    });
+  },
+
   logout(){
     return $.ajax({
       url: "/users/sign_out",
