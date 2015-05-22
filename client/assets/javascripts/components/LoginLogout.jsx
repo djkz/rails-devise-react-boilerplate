@@ -12,14 +12,16 @@ const LoginLogout = React.createClass({
   displayName: 'LoginLogout',
 
   getInitialState() {
-      return this.getStoreState();
+      return { 
+          auth: { profile: window.profile },
+          isModalOpen: false
+      }
   },
 
   getStoreState() {
-    var isModalOpen = ( this.state && this.state.isModalOpen ) ? this.state.isModalOpen : false 
     var auth = AuthStore.getState()
 
-    if( auth.profile.user_id ){ isModalOpen = false; }
+    var isModalOpen =  auth.profile.user_id ? false : this.state.isModalOpen ;
 
     return {
         auth: auth,
@@ -29,7 +31,7 @@ const LoginLogout = React.createClass({
 
   componentDidMount() {
     AuthStore.listen(this.onChange);
-    AuthActions.fetchProfile(true);
+    //AuthActions.fetchProfile(true);
   },
 
   componentWillUnmount() {

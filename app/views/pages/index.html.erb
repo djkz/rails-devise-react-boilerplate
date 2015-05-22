@@ -1,4 +1,7 @@
 <div id="content"></div>
 
 
+<script>
+    window.profile = { user_id: <%= current_user.try(:id) || "null" %>, name: "<%= current_user.try(:name) %>" }
+</script>
 

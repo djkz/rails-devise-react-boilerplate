@@ -46,7 +46,9 @@ class AuthStore {
   }
 
   handleUpdateSignUpError(response){
-      this.signUpErrors = response.responseJSON.errors;
+      if( response.responseJSON.errors )
+          {  this.signUpErrors = response.responseJSON.errors; }
+
   }
 
   handleFetchProfile(displaySpinner) {
