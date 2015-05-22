@@ -1,11 +1,9 @@
 import alt from '../FluxAlt';
 import AuthActions from '../actions/AuthActions';
 
-const defaultProfile = {user_id: null, name: null}
-
 class AuthStore {
   constructor() {
-    this.profile = defaultProfile;
+    this.profile = window.profile;
     this.ajaxSending = false;
     this.loginError = null;
     this.signUpErrors = null;
@@ -26,7 +24,8 @@ class AuthStore {
   }
 
   handleLogout(){
-      this.profile = defaultProfile;
+      const profile = {user_id: null, name: "" }
+      this.profile = profile;
   }
 
   handleLogin(user){
