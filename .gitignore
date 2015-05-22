@@ -23,3 +23,5 @@ npm-debug.log
 
 # Ignore bundle dependencies
 vendor/ruby
+
+*~
