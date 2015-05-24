@@ -30,7 +30,7 @@ const Navigation = React.createClass({
   render() {
 
     return (
-        <Navbar brand="Slirc">
+        <Navbar>
              <Nav navbar right>
                  <LoginLogout />
              </Nav>
